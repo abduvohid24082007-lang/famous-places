@@ -1,0 +1,23 @@
+node_modules/
+
+# Env fayllar
+.env
+.env.local
+.env.*.local
+!.env.example
+
+dist/
+build/
+
+*.log
+npm-debug.log*
+
+.DS_Store
+Thumbs.db
+
+.vscode/
+.idea/
+*.swp
+
+coverage/
+.cache/

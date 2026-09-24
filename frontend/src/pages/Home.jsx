@@ -1,14 +1,14 @@
-import { SignInButton, SignUpButton } from '@clerk/react';
+import { SignInButton, SignUpButton } from "@clerk/react";
 
 function Home() {
   return (
     <div className="flex flex-col items-center justify-center py-24 px-4 text-center">
       <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
-        Collection App'ga Xush Kelibsiz
+        Welcome to famous places darling!
       </h1>
       <p className="text-lg text-gray-600 max-w-xl mb-8">
-        Shaxsiy kolleksiyangizni yarating, saqlang va boshqaring.
-        Kirish yoki ro'yxatdan o'ting va boshlang.
+        Siz bolgan eng mashxur joylarni saqlang boshqaring. Kirish yoki
+        ro'yxatdan o'ting va boshlang.
       </p>
       <div className="flex flex-wrap gap-4 justify-center">
         <SignUpButton mode="modal">

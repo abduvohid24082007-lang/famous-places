@@ -1,10 +1,14 @@
-import { useAuth } from '@clerk/react'
-import Navbar from './components/Navbar';
+import { useAuth } from '@clerk/react';
+import { Routes, Route } from 'react-router-dom';
+
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
+import Layout from './components/Layout';
+import Profile from './pages/Profile';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
-  const { isLoaded, isSignedIn } = useAuth();
+  const { isLoaded } = useAuth();
 
   if (!isLoaded) {
     return (
@@ -15,12 +19,29 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
-      <Navbar />
-      <main className="flex-1">
-        {isSignedIn ? <Dashboard /> : <Home />}
-      </main>
-    </div>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path="/" element={<Home />} />
+
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+      </Route>
+    </Routes>
   );
 }
 

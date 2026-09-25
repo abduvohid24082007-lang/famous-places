@@ -15,7 +15,7 @@ function Home() {
     transition-all duration-500
   "
 >
-  Welcome to famous places, darling! ✨
+  Welcome to famous places✨
 </h1>
 <p
   className="

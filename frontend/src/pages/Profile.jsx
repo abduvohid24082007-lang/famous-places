@@ -1,6 +1,6 @@
-import useCurrentUser from '../hooks/useCurrentUser';
-import { useClerk } from '@clerk/react';
-import { useNavigate } from 'react-router';
+import useCurrentUser from "../hooks/useCurrentUser";
+import { useClerk } from "@clerk/react";
+import { useNavigate } from "react-router-dom";
 
 function Profile() {
   const { user, isLoaded, displayName, email, avatar } = useCurrentUser();
@@ -9,8 +9,8 @@ function Profile() {
 
   if (!isLoaded) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-violet-100 via-white to-cyan-100">
-        <p className="text-violet-600 font-semibold animate-pulse">
+      <div className="min-h-screen flex items-center justify-center">
+        <p className="text-white font-semibold animate-pulse">
           Yuklanmoqda...
         </p>
       </div>
@@ -21,99 +21,237 @@ function Profile() {
 
   const chiqish = async () => {
     await signOut();
-    navigate('/');
+    navigate("/");
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-violet-100 via-sky-50 to-pink-100 px-4 py-10">
+    <div className="min-h-screen px-4 py-12">
       <div className="container mx-auto max-w-2xl">
 
         {/* Profile Card */}
-        <div className="bg-white/90 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden border border-white">
+        <div
+          className="
+            bg-black/40
+            backdrop-blur-xl
+            rounded-3xl
+            overflow-hidden
+            border border-cyan-300/30
+            shadow-[0_0_40px_rgba(34,211,238,0.15)]
+          "
+        >
 
           {/* Header */}
-          <div className="h-36 bg-gradient-to-r from-violet-600 via-blue-500 to-cyan-400 relative">
-            <div className="absolute inset-0 bg-white/10"></div>
+          <div
+            className="
+              h-36
+              bg-gradient-to-r
+              from-cyan-500/80
+              via-blue-500/70
+              to-violet-600/80
+              relative
+            "
+          >
+            <div className="absolute inset-0 bg-white/10" />
 
-            <div className="absolute top-5 right-6 w-20 h-20 rounded-full bg-pink-400/30 blur-2xl"></div>
-            <div className="absolute bottom-2 left-8 w-24 h-24 rounded-full bg-yellow-300/30 blur-2xl"></div>
+            {/* Neon lights */}
+            <div
+              className="
+                absolute top-4 right-8
+                w-24 h-24
+                bg-cyan-300/30
+                rounded-full
+                blur-3xl
+              "
+            />
+
+            <div
+              className="
+                absolute bottom-0 left-8
+                w-28 h-28
+                bg-violet-400/30
+                rounded-full
+                blur-3xl
+              "
+            />
           </div>
 
           {/* Avatar + Name */}
-          <div className="px-6 -mt-16 mb-7">
+          <div className="px-6 -mt-16 mb-8 relative">
             <div className="flex flex-col items-center">
 
-              <img
-                src={avatar}
-                alt={displayName}
-                className="w-32 h-32 rounded-full border-4 border-white shadow-xl object-cover"
-              />
+              {/* Avatar */}
+              <div
+                className="
+                  p-1
+                  rounded-full
+                  bg-gradient-to-r
+                  from-cyan-300
+                  via-blue-400
+                  to-violet-500
+                  shadow-[0_0_25px_rgba(34,211,238,0.7)]
+                "
+              >
+                <img
+                  src={avatar}
+                  alt={displayName}
+                  className="
+                    w-32 h-32
+                    rounded-full
+                    border-4 border-black/70
+                    object-cover
+                  "
+                />
+              </div>
 
-              <h1 className="font-bold text-3xl mt-4 bg-gradient-to-r from-violet-600 to-blue-500 bg-clip-text text-transparent">
+              {/* Name */}
+              <h1
+                className="
+                  text-3xl
+                  font-black
+                  mt-5
+                  bg-gradient-to-r
+                  from-white
+                  via-cyan-200
+                  to-cyan-400
+                  bg-clip-text
+                  text-transparent
+                  drop-shadow-[0_0_10px_rgba(34,211,238,0.5)]
+                "
+              >
                 {displayName}
               </h1>
 
-              <p className="text-gray-500 mt-1">
+              {/* Email */}
+              <p className="text-white/70 mt-2 font-medium">
                 {email}
               </p>
 
-              <span className="mt-3 px-4 py-1 rounded-full text-sm font-medium bg-violet-100 text-violet-700">
-                Foydalanuvchi
+              {/* Badge */}
+              <span
+                className="
+                  mt-4
+                  px-4 py-1.5
+                  rounded-full
+                  text-sm
+                  font-semibold
+                  text-cyan-200
+                  bg-cyan-400/10
+                  border border-cyan-300/30
+                  shadow-[0_0_12px_rgba(34,211,238,0.2)]
+                "
+              >
+                ✦ Foydalanuvchi
               </span>
             </div>
           </div>
 
-          {/* User information */}
-          <div className="border-t border-gray-100 px-6 py-6 space-y-4">
+          {/* User Information */}
+          <div className="border-t border-white/10 px-6 py-6 space-y-4">
 
-            <div className="flex justify-between items-center bg-violet-50 rounded-xl px-4 py-3">
-              <span className="text-gray-500 text-sm">
+            {/* User ID */}
+            <div
+              className="
+                flex justify-between items-center
+                bg-white/5
+                backdrop-blur-md
+                border border-white/10
+                rounded-xl
+                px-4 py-4
+                hover:border-cyan-300/40
+                transition-all duration-300
+              "
+            >
+              <span className="text-white/60 text-sm">
                 Foydalanuvchi ID
               </span>
 
-              <span className="font-mono text-xs text-violet-700 max-w-[220px] truncate">
+              <span
+                className="
+                  font-mono
+                  text-xs
+                  text-cyan-300
+                  max-w-[220px]
+                  truncate
+                "
+              >
                 {user.id}
               </span>
             </div>
 
-            <div className="flex justify-between items-center bg-cyan-50 rounded-xl px-4 py-3">
-              <span className="text-gray-500 text-sm">
+            {/* Registration Date */}
+            <div
+              className="
+                flex justify-between items-center
+                bg-white/5
+                backdrop-blur-md
+                border border-white/10
+                rounded-xl
+                px-4 py-4
+                hover:border-cyan-300/40
+                transition-all duration-300
+              "
+            >
+              <span className="text-white/60 text-sm">
                 Ro'yxatdan o'tgan
               </span>
 
-              <span className="text-cyan-700 font-medium">
-                {new Date(user.createdAt).toLocaleDateString('uz-UZ')}
+              <span className="text-cyan-300 font-semibold">
+                {new Date(user.createdAt).toLocaleDateString("uz-UZ")}
               </span>
             </div>
 
           </div>
 
           {/* Buttons */}
-          <div className="border-t border-gray-100 px-6 py-6 flex flex-col sm:flex-row gap-3">
+          <div
+            className="
+              border-t border-white/10
+              px-6 py-6
+              flex flex-col sm:flex-row
+              gap-4
+            "
+          >
 
+            {/* Settings */}
             <button
               onClick={() => openUserProfile()}
-              className="flex-1 py-3 rounded-xl text-white font-semibold
-              bg-gradient-to-r from-violet-600 to-blue-500
-              hover:from-violet-700 hover:to-blue-600
-              shadow-lg shadow-violet-200
-              hover:shadow-xl
-              transition-all duration-300
-              hover:-translate-y-0.5"
+              className="
+                flex-1
+                py-3
+                rounded-xl
+                font-semibold
+                text-white
+                bg-archazor
+                border-2 border-cyan-300
+                transition-all duration-300
+                hover:bg-cyan-400
+                hover:text-black
+                hover:border-cyan-200
+                hover:shadow-[0_0_10px_rgba(34,211,238,0.8),0_0_30px_rgba(34,211,238,0.5)]
+                hover:scale-105
+              "
             >
-              Hisobni sozlash
+              ⚙ Hisobni sozlash
             </button>
 
+            {/* Logout */}
             <button
               onClick={chiqish}
-              className="flex-1 py-3 rounded-xl font-semibold
-              text-pink-600
-              border-2 border-pink-200
-              bg-pink-50
-              hover:bg-pink-500
-              hover:text-white
-              hover:border-pink-500
-              transition-all duration-300"
+              className="
+                flex-1
+                py-3
+                rounded-xl
+                font-semibold
+                text-white
+                bg-black/30
+                border-2 border-pink-300/70
+                transition-all duration-300
+                hover:bg-pink-500
+                hover:text-white
+                hover:border-pink-300
+                hover:shadow-[0_0_10px_rgba(236,72,153,0.8),0_0_30px_rgba(236,72,153,0.5)]
+                hover:scale-105
+              "
             >
               Chiqish
             </button>
